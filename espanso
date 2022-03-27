@@ -1,0 +1,144 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
+
+  # General
+
+  - trigger: ";link"
+    replace: "[$|$]({{clipboard}})"
+    vars:
+      - name: "clipboard"
+        type: "clipboard"
+
+# Symbols
+
+  - regex: ";bb(?P<letter>[A-Z])"
+    replace: "\\mathbb{{{letter}}}"
+
+  - regex: ";cal(?P<letter>[A-Z])"
+    replace: "\\mathcal{{{letter}}}"
+
+# Analysis
+
+  - regex: ";sn(?P<letter>[a-z])"
+    replace: "({{letter}}_n)_{n\\in\\mathbb{N}}"
+
+  - trigger: ";limits"
+    replace: "\\lim_{n\\to\\infty}"
+
+# Environments   
+
+  - trigger: ";bm"
+    replace: "\\begin{bmatrix}$|$\\end{bmatrix}"
+
+  - trigger: ";pm"
+    replace: "\\begin{pmatrix}$|$\\end{pmatrix}"
+
+  - trigger: ";matrix"
+    replace: "\\begin{matrix}$|$\\end{matrix}"
+
+  - trigger: ";align"
+    replace: "$$\\begin{align*}\n$|$\n\\end{align*}$$"
+
+  - trigger: ";cases"
+    replace: "\\begin{cases}\n$|$\n\\end{cases}"
+
+  - trigger: ";subarray"
+    replace: "\\begin{subarray}[l]$|$\\end{subarray}"
+
+# Operations
+
+  - trigger: ";sum"
+    replace: "\\sum_{i=1}^n"
+
+  - trigger: ";infsum"
+    replace: "\\sum_{n=1}^{\\infty}"
+
+  - trigger: ";prod"
+    replace: "\\prod_{i=1}^n"
+
+  - trigger: ";bigcup"
+    replace: "\\bigcup_{i=1}^n"
+
+  - trigger: ";bigcap"
+    replace: "\\bigcap_{i=1}^n"
+
+# Brackets
+
+  - trigger: ";(("
+    replace: "\\left($|$\\right)"
+
+  - trigger: ";||"
+    replace: "\\left|$|$\\right|"
+
+  - trigger: ";{{"
+    replace: "\\left\\{ $|$\\right\\}"
+
+  - trigger: ";[["
+    replace: "\\left[$|$\\right]"
+
+  - trigger: ";ceil"
+    replace: "\\lceil$|$\\rceil"
+
+  - trigger: ";floor"
+    replace: "\\lfloor$|$\\rfloor"
+
+# Joplin
+
+  - trigger: ";def"
+    replace: "**Definition ($|$)**.**"
+
+  - trigger: ";thm"
+    replace: "**Theorem ($|$)**.**"
+
+  - trigger: ";remark"
+    replace: "**Remark.**"
+
+  - trigger: ";proof"
+    replace: "*Proof**.*"
+
+  - trigger: ";im"
+    replace: "<center/><img src=\":/$|$\" width='300'/></center>"
+
+# Firefox
+  
+  - trigger: ";pp"
+    replace: "about:profiles"
+
+# LaTeX
+
+
