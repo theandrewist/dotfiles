@@ -1,2 +1,1 @@
-# user.js
-arkenfox
+My dotfiles
